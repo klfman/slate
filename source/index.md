@@ -1,168 +1,120 @@
 ---
-title: API Reference
-
-language_tabs:
-  - shell
-  - ruby
-  - python
+title: Developermail Documentation
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://developermail.io/signup'>Sign Up for Developermail</a>
+  - <a href='https://github.com/developermail/slate'>Help improving this documentation</a>
 
-includes:
-  - errors
+includes: 
 
-search: true
+search: false
 ---
 
-# Introduction1
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+# Introduction
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+This is a living document. Please help us improving this documentation by forking
+and opening pull requests at https://github.com/developermail/slate Thanks!
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Please note that Developermail is currently in BETA. Please expect bugs and issues.
+If you encounter anything, please contact us at support@developermail.io
 
-# Authentication
 
-> To authorize, use this code:
+# Getting started
 
-```ruby
-require 'kittn'
+## What you need?
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+* Invitation code (Developermail is invite-only at the moment)
+* Git (``brew install git``)
+* Email client
 
-```python
-import kittn
+## Sign up
 
-api = kittn.authorize('meowmeowmeow')
-```
+Open https://developermail.io/signup, enter your invitation code and
+create your first mailbox. You are able to create more mailboxes/ aliases later.
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+We are starting by offering a 5 USD per mailbox per month plan. This plan includes
+5GB of storage. Aliases under @developermail.io are limited to 3 aliases. There are no
+limits on aliases for custom domains. Everything else is under our fair usage policy.
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+## Update DNS settings
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+If you registered your mailbox under @developermail.io you can skip this step.
 
-`Authorization: meowmeowmeow`
+If you registered your mailbox under a custom domain, you need to update your DNS
+settings for this domain in order to retrieve emails.
 
-<aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
-</aside>
+Please open https://developermail.io/dns-check#/your-domain.com for more information.
 
-# Kittens
+## Start configuring ...
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+You are now ready to start configuiring. Clone your private repository and
+provide the credentials that have been provided to you after your signup.
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+git clone https://developermail.io/git/bob@example.com
+Cloning into 'bob@example.com'...
+remote: Counting objects: 11, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 11 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (11/11), done.
+Checking connectivity... done.
+
+cd bob@example.com
+ls
+config.yaml  sieve/
 ```
 
-> The above command returns JSON structured like this:
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+# Configuration
+
+
+## config.yaml
+
+> Your initial ``config.yaml`` will look like this:
+
+```yaml
+developermail.io:
+  fritz:
+    sieve: sieve/default.sieve
+    aliases: []
+    forwards: []
 ```
 
-This endpoint retrieves all kittens.
+> Or, if you use a custom domain:
 
-### HTTP Request
-
-`GET http://example.com/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```yaml
+example.com:
+  fritz:
+    sieve: sieve/default.sieve
+    aliases: []
+    forwards: []
 ```
 
-```python
-import kittn
+### Aliases
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+#### Create alias
 
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
+#### Delete alias
 
-> The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+### Forwards
 
-This endpoint retrieves a specific kitten.
+#### Create forward
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+#### Delete forward
 
-### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+### Mailboxes
 
-### URL Parameters
+#### Create mailbox
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+#### Delete mailbox
+
+#### Delete my account
+
+
+## sieve
+
 
