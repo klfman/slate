@@ -1,0 +1,20 @@
+defaults: &defaults
+  image: developermail/slate
+  name: developermail-slate
+
+  rm: true
+  tty: true
+  interactive: true
+
+  volume:
+    - $PWD:/app
+
+server:
+  <<: *defaults
+  publish:
+    - 4567:4567
+  command: bundle exec middleman server
+
+build:
+  <<: *defaults
+  command: bundle exec rake build
