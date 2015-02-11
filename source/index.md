@@ -9,21 +9,16 @@ search: false
 ---
 
 
-
-
-
 # Introduction
 
 This is a living document. Please help us improving this documentation by forking
-and opening pull requests at https://github.com/developermail/slate Thanks!
+and opening pull requests on [Github](https://github.com/developermail/slate) Thanks!
 
-Please note that Developermail is currently in BETA. Please expect bugs and issues.
-If you encounter anything, please contact us at support@developermail.io
+Please note that Developermail is currently in BETA. Not all features are deployed yet.
+You might also expect some bugs and glitches, even though we're pretty confident to provide a stable
+service nontheless, as the underlying techologies are battle-proven open-source products.
 
-
-
-
-
+If you encounter any bugs or security issues,, please [contact us](mailto:support@developermail.io).
 
 
 # Getting started
@@ -103,7 +98,7 @@ aliases:
   - ...
 ```
 
-You are able to create and delete aliases by simply adding and removing them 
+You are able to create and delete aliases by simply adding and removing them
 to/ from the ``aliases`` variable.
 
 Please note that there is a limit of 3 aliases if you use our developermail.io domain.
