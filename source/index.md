@@ -209,6 +209,13 @@ to/ from the global section.
 
 There are not limits on domains. We won't charge for domains neither.
 
+Once you push your changes, you'll receive all information required to adapt the domains DNS
+settings. If you need any help, or if you want to check whether your settings are ok, visit the
+DNS settings check page ``https://developermail.io/dns-check#/your-domain.com``.
+
+The domain will not be activated until you at least set the ``developermail-verification`` TXT
+record.
+
 
 ## Sieve
 
