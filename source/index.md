@@ -56,29 +56,31 @@ help you with these settings.
 
 ## Start configuring ...
 
-> Clone your private repository ...
+> Clone your private developermail configuration repository
 
 ```shell
-git clone https://developermail.io/git/bob@example.com
+$ git clone https://developermail.io/git/bob@example.com
 Cloning into 'bob@example.com'...
+Username for 'https://developermail.io': bob@example.com
+Password for 'https://bob@example.com@developermail.io': *********
+
 remote: Counting objects: 11, done.
 remote: Compressing objects: 100% (10/10), done.
 remote: Total 11 (delta 2), reused 0 (delta 0)
 Unpacking objects: 100% (11/11), done.
 Checking connectivity... done.
 
-cd bob@example.com
-ls
-config.yaml  sieve/
+$ cd bob@example.com
+$ tree
+.
+├── config.yaml
+└── sieve
+    └── default.sieve
+
+1 directory, 2 files
 ```
 
-You are now ready to start configuiring. Clone your private repository and
-provide the credentials that have been provided to you after your signup.
-
-
-
-
-
+You are now ready to start configuring.
 
 
 # Configuration
