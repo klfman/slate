@@ -284,7 +284,6 @@ If there's any issues, please feel free to send an email to our [support](mailto
 ```
 $ git push
 [...]
-remote: -------------------------------------------------------------------------
 remote: You'll be billed $15.00 this month.
 remote: If you have any questions, feel free to contact support@developermail.io!
 remote:
