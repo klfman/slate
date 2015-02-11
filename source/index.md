@@ -46,12 +46,13 @@ aliases.
 
 ## Update DNS settings
 
-If you registered your mailbox under @developermail.io you can skip this step.
+If you registered your mailbox using the @developermail.io domain, you can skip this step.
 
-If you registered your mailbox under a custom domain, you need to update your DNS
-settings for this domain in order to retrieve emails.
+When using a custom domain, you need to update your DNS settings in order to retrieve mails.
 
-Please open https://developermail.io/dns-check#/your-domain.com for more information.
+We're providing a DNS settings check page ``https://developermail.io/dns-check#/your-domain.com`` to
+help you with these settings.
+
 
 ## Start configuring ...
 
