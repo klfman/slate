@@ -114,16 +114,17 @@ bob@developermail.io:
 
 ```yaml
 aliases:
+  # This adds alias1@example.com and alias2@example.com as aliases for the mailbox
   - alias1
   - alias2
   - ...
 ```
 
 You are able to create and delete aliases by simply adding and removing them
-to/ from the ``aliases`` variable.
+to/ from the ``aliases`` array.
 
-Please note that there is a limit of 3 aliases if you use our developermail.io domain.
-If you use a custom domain, there is no limit on the number of aliases.
+Please note that there is a limit of 3 aliases per mailbox if you use our developermail.io domain.
+If you use a custom domain, there is no limitation of how many aliases you can use per mailbox.
 
 
 ## Forwards
