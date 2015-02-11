@@ -26,8 +26,8 @@ If you encounter any bugs or security issues,, please [contact us](mailto:suppor
 ## Requirements
 
 * Invitation code (Developermail is invite-only at the moment)
-* Git (``brew install git``)
-* Email client
+* [Git](http://git-scm.com/)
+* Email client (IMAP/SMTP capable)
 
 ## Sign up
 
