@@ -88,12 +88,25 @@ You are now ready to start configuring.
 > Your initial ``config.yaml`` will look like this:
 
 ```yaml
-developermail.io: # or custom-domain.com
-  fritz:
+# We registered at Developermail using bob@example.com
+example.com:
+  bob:
     sieve: sieve/default.sieve
     aliases: []
     forwards: []
 ```
+
+> Or like this, if you chose to signup for a @developermail.io mailbox
+
+```yaml
+# We registered bob@developermail.io
+bob@developermail.io:
+  bob:
+    sieve: sieve/default.sieve
+    aliases: []
+    forwards: []
+```
+
 
 ## Aliases
 
