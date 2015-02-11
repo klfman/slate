@@ -53,6 +53,16 @@ When using a custom domain, you need to update your DNS settings in order to ret
 We're providing a DNS settings check page ``https://developermail.io/dns-check#/your-domain.com`` to
 help you with these settings.
 
+> DNS settings
+
+```
+MX  smtp.developermail.io.
+TXT developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TXT v=spf1 ip4:88.198.18.23 -all
+TXT spf2.0/mfrom,pra ip4:88.198.18.23 -all
+TXT v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB
+```
+
 
 ## Start configuring ...
 
