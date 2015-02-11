@@ -261,7 +261,7 @@ this document on [Github](https://github.com/developermail/slate) for additional
 
 > File messages from certian addresses into folders
 
-```
+```c
 require ["fileinto"];
 
 # Automatically put all emails from Facebook and Twitter in the social folder
