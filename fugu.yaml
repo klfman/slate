@@ -1,5 +1,5 @@
 defaults: &defaults
-  image: developermail/slate
+  image: docker.jungpark.org/developermail/slate
   name: developermail-slate
 
   rm: true
