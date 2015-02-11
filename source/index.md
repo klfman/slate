@@ -133,8 +133,8 @@ If you use a custom domain, there is no limitation of how many aliases you can u
 
 ```yaml
 forwards:
-  - forward1
-  - forward2
+  - bob.smith@gmail.com
+  - claudia.bechermehl@posteo.de
   - ...
 ```
 
@@ -142,6 +142,9 @@ You are able to create and delete forwards by simply adding and removing them
 to/ from the ``forwards`` variable.
 
 There are no limits on forwards neither for developermail.io nor for custom domains.
+
+Note: When using a forward, the email will not be delivered to your Developermail mailbox, but only
+forwarded to the addresses specified.
 
 
 ## Mailboxes
