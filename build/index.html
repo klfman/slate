@@ -35,10 +35,13 @@
         <h1 id="introduction">Introduction</h1>
 
 <p>This is a living document. Please help us improving this documentation by forking
-and opening pull requests at https://github.com/developermail/slate Thanks!</p>
+and opening pull requests on <a href="https://github.com/developermail/slate">Github</a> Thanks!</p>
 
-<p>Please note that Developermail is currently in BETA. Please expect bugs and issues.
-If you encounter anything, please contact us at support@developermail.io</p>
+<p>Please note that Developermail is currently in BETA. Not all features are deployed yet.
+You might also expect some bugs and glitches, even though we&rsquo;re pretty confident to provide a stable
+service nontheless, as the underlying techologies are battle-proven open-source products.</p>
+
+<p>If you encounter any bugs or security issues,, please <a href="mailto:support@developermail.io">contact us</a>.</p>
 
 <h1 id="getting-started">Getting started</h1>
 
@@ -46,56 +49,80 @@ If you encounter anything, please contact us at support@developermail.io</p>
 
 <ul>
 <li>Invitation code (Developermail is invite-only at the moment)</li>
-<li>Git (<code class="prettyprint">brew install git</code>)</li>
-<li>Email client</li>
+<li><a href="http://git-scm.com/">Git</a></li>
+<li>Email client (IMAP/SMTP capable)</li>
 </ul>
 
 <h2 id="sign-up">Sign up</h2>
 
-<p>Open https://developermail.io/signup, enter your invitation code and
+<p>Open <a href="https://developermail.io/signup">https://developermail.io/signup</a>, enter your invitation code and
 create your first mailbox. You are able to create more mailboxes/ aliases later.</p>
 
-<p>We are starting by offering a 5 USD per mailbox per month plan. This plan includes
-5GB of storage. Aliases under @developermail.io are limited to 3 aliases. There are no
-limits on aliases for custom domains.</p>
+<p>Make sure you note your password once your signup is complete! It won&rsquo;t be displayed again. This
+password is used to authenticate yourself at the IMAP/SMTP services as well as for Git
+configuration.</p>
+
+<p>We are starting by offering a 5 USD per mailbox per month plan.
+This plan includes 5GB of storage.
+Aliases for @developermail.io mailboxes are limited to three. Custom domains include unlimited free
+aliases.</p>
 
 <h2 id="update-dns-settings">Update DNS settings</h2>
 
-<p>If you registered your mailbox under @developermail.io you can skip this step.</p>
+<p>If you registered your mailbox using the @developermail.io domain, you can skip this step.</p>
 
-<p>If you registered your mailbox under a custom domain, you need to update your DNS
-settings for this domain in order to retrieve emails.</p>
+<p>When using a custom domain, you need to update your DNS settings in order to retrieve mails.</p>
 
-<p>Please open https://developermail.io/dns-check#/your-domain.com for more information.</p>
+<p>We&rsquo;re providing a DNS settings check page <code class="prettyprint">https://developermail.io/dns-check#/your-domain.com</code> to
+help you with these settings.</p>
 
 <h2 id="start-configuring-...">Start configuring &hellip;</h2>
 
 <blockquote>
-<p>Clone your private repository &hellip;</p>
+<p>Clone your private developermail configuration repository</p>
 </blockquote>
-<pre><code class="highlight shell">git clone https://developermail.io/git/bob@example.com
+<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://developermail.io/git/bob@example.com
 Cloning into <span class="s1">'bob@example.com'</span>...
+Username <span class="k">for</span> <span class="s1">'https://developermail.io'</span>: bob@example.com
+Password <span class="k">for</span> <span class="s1">'https://bob@example.com@developermail.io'</span>: <span class="k">*********</span>
+
 remote: Counting objects: 11, <span class="k">done</span>.
 remote: Compressing objects: 100% <span class="o">(</span>10/10<span class="o">)</span>, <span class="k">done</span>.
 remote: Total 11 <span class="o">(</span>delta 2<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
 Unpacking objects: 100% <span class="o">(</span>11/11<span class="o">)</span>, <span class="k">done</span>.
 Checking connectivity... <span class="k">done</span>.
 
-<span class="nb">cd </span>bob@example.com
-ls
-config.yaml  sieve/
+<span class="gp">$ </span><span class="nb">cd </span>bob@example.com
+<span class="gp">$ </span>tree
+.
+├── config.yaml
+└── sieve
+    └── default.sieve
+
+1 directory, 2 files
 </code></pre>
 
-<p>You are now ready to start configuiring. Clone your private repository and
-provide the credentials that have been provided to you after your signup.</p>
+<p>You are now ready to start configuring.</p>
 
 <h1 id="configuration">Configuration</h1>
 
 <blockquote>
 <p>Your initial <code class="prettyprint">config.yaml</code> will look like this:</p>
 </blockquote>
-<pre><code class="highlight yaml"><span class="s">developermail.io</span><span class="pi">:</span> <span class="c1"># or custom-domain.com</span>
-  <span class="s">fritz</span><span class="pi">:</span>
+<pre><code class="highlight yaml"><span class="c1"># We registered at Developermail using bob@example.com</span>
+<span class="s">example.com</span><span class="pi">:</span>
+  <span class="s">bob</span><span class="pi">:</span>
+    <span class="s">sieve</span><span class="pi">:</span> <span class="s">sieve/default.sieve</span>
+    <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[]</span>
+    <span class="s">forwards</span><span class="pi">:</span> <span class="pi">[]</span>
+</code></pre>
+
+<blockquote>
+<p>Or like this, if you chose to signup for a @developermail.io mailbox</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="c1"># We registered bob@developermail.io</span>
+<span class="s">bob@developermail.io</span><span class="pi">:</span>
+  <span class="s">bob</span><span class="pi">:</span>
     <span class="s">sieve</span><span class="pi">:</span> <span class="s">sieve/default.sieve</span>
     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[]</span>
     <span class="s">forwards</span><span class="pi">:</span> <span class="pi">[]</span>
@@ -107,16 +134,17 @@ provide the credentials that have been provided to you after your signup.</p>
 <p>Create and delete aliases</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="s">aliases</span><span class="pi">:</span>
+  <span class="c1"># This adds alias1@example.com and alias2@example.com as aliases for the mailbox</span>
   <span class="pi">-</span> <span class="s">alias1</span>
   <span class="pi">-</span> <span class="s">alias2</span>
   <span class="pi">-</span> <span class="s">...</span>
 </code></pre>
 
-<p>You are able to create and delete aliases by simply adding and removing them 
-to/ from the <code class="prettyprint">aliases</code> variable.</p>
+<p>You are able to create and delete aliases by simply adding and removing them
+to/ from the <code class="prettyprint">aliases</code> array.</p>
 
-<p>Please note that there is a limit of 3 aliases if you use our developermail.io domain.
-If you use a custom domain, there is no limit on the number of aliases.</p>
+<p>Please note that there is a limit of 3 aliases per mailbox if you use our developermail.io domain.
+If you use a custom domain, there is no limitation of how many aliases you can use per mailbox.</p>
 
 <h2 id="forwards">Forwards</h2>
 
@@ -124,8 +152,8 @@ If you use a custom domain, there is no limit on the number of aliases.</p>
 <p>Create and delete forwards</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="s">forwards</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">forward1</span>
-  <span class="pi">-</span> <span class="s">forward2</span>
+  <span class="pi">-</span> <span class="s">bob.smith@gmail.com</span>
+  <span class="pi">-</span> <span class="s">claudia.bechermehl@posteo.de</span>
   <span class="pi">-</span> <span class="s">...</span>
 </code></pre>
 
@@ -133,6 +161,9 @@ If you use a custom domain, there is no limit on the number of aliases.</p>
 to/ from the <code class="prettyprint">forwards</code> variable.</p>
 
 <p>There are no limits on forwards neither for developermail.io nor for custom domains.</p>
+
+<p>Note: When using a forward, the email will not be delivered to your Developermail mailbox, but only
+forwarded to the addresses specified.</p>
 
 <h2 id="mailboxes">Mailboxes</h2>
 
@@ -156,12 +187,22 @@ to/ from the <code class="prettyprint">domain</code> section.</p>
 <h3 id="update-password-for-mailbox">Update password for mailbox</h3>
 
 <p>Passwords are automatically generated by our system. If you want to update
-the mailbox password, you need to initiate a <code class="prettyprint">curl</code> request.</p>
+the mailbox password, you need to initiate a <code class="prettyprint">curl</code> request.
+You will be asked for your old password. On success, a new password is generated for you.</p>
 
 <blockquote>
 <p>Update mailbox password</p>
 </blockquote>
 <pre><code class="highlight shell">curl -X POST -u fritz@developermail.io https://developermail.io/api/accounts/change-password
+</code></pre>
+
+<p>You can also re-generate passwords for all mailboxes under your command, using the admin login (the
+first mailbox you created when registering for developermail)</p>
+
+<blockquote>
+<p>Update mailbox using the admin account</p>
+</blockquote>
+<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com https://developermail.io/api/accounts/change-password --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
 </code></pre>
 
 <h2 id="domains">Domains</h2>
@@ -184,6 +225,13 @@ the mailbox password, you need to initiate a <code class="prettyprint">curl</cod
 to/ from the global section.</p>
 
 <p>There are not limits on domains. We won&rsquo;t charge for domains neither.</p>
+
+<p>Once you push your changes, you&rsquo;ll receive all information required to adapt the domains DNS
+settings. If you need any help, or if you want to check whether your settings are ok, visit the
+DNS settings check page <code class="prettyprint">https://developermail.io/dns-check#/your-domain.com</code>.</p>
+
+<p>The domain will not be activated until you at least set the <code class="prettyprint">developermail-verification</code> TXT
+record.</p>
 
 <h2 id="sieve">Sieve</h2>
 
@@ -210,14 +258,48 @@ to/ from the global section.</p>
 
 <h3 id="sieve-examples">Sieve Examples</h3>
 
-<p>@TODO</p>
+<p>Developermail has full sieve support. Refer to the <a href="http://sieve.info/documents">RFCs</a> for detailed
+information, or adapt one of our examples!</p>
+
+<p>Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
+this document on <a href="https://github.com/developermail/slate">Github</a> for additional karma!</p>
+
+<blockquote>
+<p>File messages from certian addresses into folders</p>
+</blockquote>
+<pre><code class="highlight plaintext">require ["fileinto"];
+
+# Automatically put all emails from Facebook and Twitter in the social folder
+if anyof (address :contains "From" "twitter.com",
+          address :contains "From" "@facebookmail.com") {
+
+    fileinto "social";
+    stop;
+}
+</code></pre>
 
 <h1 id="billing-&amp;-account">Billing &amp; Account</h1>
 
+<p>Upon every push, you&rsquo;ll receive a note of the amout you&rsquo;ll be billed in the upcoming month.
+If there&rsquo;s any issues, please feel free to send an email to our <a href="mailto:support@developermail.io">support</a>.</p>
+
+<blockquote>
+<p>Billing information displayed upon &ldquo;git push&rdquo;</p>
+</blockquote>
+<pre><code class="highlight plaintext">$ git push
+[...]
+remote: -------------------------------------------------------------------------
+remote: You'll be billed $15.00 this month.
+remote: If you have any questions, feel free to contact support@developermail.io!
+remote:
+To https://developermail.io/git/bob@example.com
+   52ab6e0..d336592  master -&gt; master
+</code></pre>
+
 <h2 id="delete-account">Delete account</h2>
 
-<p>Please contact our support team if you want to delete your account. We will be
-able to provide a curl request for account deletion soon.</p>
+<p>Please contact our support team if you want to delete your account.
+We&rsquo;re currently working on the automated process for deleting accounts.</p>
 
       </div>
       <div class="dark-box">
