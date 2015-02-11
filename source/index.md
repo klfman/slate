@@ -31,12 +31,17 @@ If you encounter any bugs or security issues,, please [contact us](mailto:suppor
 
 ## Sign up
 
-Open https://developermail.io/signup, enter your invitation code and
+Open [https://developermail.io/signup](https://developermail.io/signup), enter your invitation code and
 create your first mailbox. You are able to create more mailboxes/ aliases later.
 
-We are starting by offering a 5 USD per mailbox per month plan. This plan includes
-5GB of storage. Aliases under @developermail.io are limited to 3 aliases. There are no
-limits on aliases for custom domains.
+Make sure you note your password once your signup is complete! It won't be displayed again. This
+password is used to authenticate yourself at the IMAP/SMTP services as well as for Git
+configuration.
+
+We are starting by offering a 5 USD per mailbox per month plan.
+This plan includes 5GB of storage.
+Aliases for @developermail.io mailboxes are limited to three. Custom domains include unlimited free
+aliases.
 
 
 ## Update DNS settings
