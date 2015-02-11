@@ -64,6 +64,27 @@ TXT v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9y
 ```
 
 
+## Configure your email client
+
+Developermail provides ``IMAP`` and ``SMTP`` endpoints for receiving/ sending emails.
+We only accept secure connections.
+
+Use ``username@domain.tld`` as username and the password we generated for you upon signup!
+
+> IMAP Endpoint
+
+```shell
+imap.developermail.io  # Port 143/STARTTLS or 993/SSL
+```
+
+
+> SMTP Endpoint
+
+```shell
+smtp.developermail.io  # Port 587/STARTTLS or 465/SSL
+```
+
+
 ## Start configuring ...
 
 > Clone your private developermail configuration repository
