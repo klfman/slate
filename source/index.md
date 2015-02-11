@@ -242,7 +242,26 @@ You can use Sieve for mail filterung rules that are applied directly on our serv
 
 ### Sieve Examples
 
-@TODO
+Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
+information, or adapt one of our examples!
+
+Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
+this document on [Github](https://github.com/developermail/slate) for additional karma!
+
+
+> File messages from certian addresses into folders
+
+```
+require ["fileinto"];
+
+# Automatically put all emails from Facebook and Twitter in the social folder
+if anyof (address :contains "From" "twitter.com",
+          address :contains "From" "@facebookmail.com") {
+
+    fileinto "social";
+    stop;
+}
+```
 
 
 # Billing & Account
