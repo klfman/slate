@@ -245,16 +245,25 @@ You can use Sieve for mail filterung rules that are applied directly on our serv
 @TODO
 
 
-
-
-
-
-
 # Billing & Account
+
+Upon every push, you'll receive a note of the amout you'll be billed in the upcoming month.
+If there's any issues, please feel free to send an email to our [support](mailto:support@developermail.io).
+
+> Billing information displayed upon "git push"
+
+```
+$ git push
+[...]
+remote: -------------------------------------------------------------------------
+remote: You'll be billed $15.00 this month.
+remote: If you have any questions, feel free to contact support@developermail.io!
+remote:
+To https://developermail.io/git/bob@example.com
+   52ab6e0..d336592  master -> master
+```
 
 ## Delete account
 
-Please contact our support team if you want to delete your account. We will be
-able to provide a curl request for account deletion soon.
-
-
+Please contact our support team if you want to delete your account.
+We're currently working on the automated process for deleting accounts.
