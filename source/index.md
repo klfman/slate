@@ -116,6 +116,67 @@ You are now ready to start configuring.
 
 # Configuration
 
+Configuring your Developermail mailboxes follows the regular git workflow.
+You make your changes to a file, commit them, and push them. As soon as they're pushed (and there's
+not error), the changes are live!
+
+As your configuration is a fully-functional git repository, you can use all the awesome Git candy,
+such as [revert, branch, blame, ...](http://www.git-scm.com/docs)!
+
+## Your first push
+
+As an example, add an additional alias to your newly created mailbox.
+
+First, edit the ``config.yaml`` file with your favorite editor.
+
+> Add an alias to config.yaml
+
+```yaml
+developermail.io:
+  # Configuration section for bob@developermail.io
+  # We signed up using this address on the Developermail signup page
+  bob:
+    # Add a new alias here. bob.smith@developermail.io
+    # will be aliases to bob@developermail.io.
+    # You can then send and receive emails from both addresses
+    # Note: Aliases are free of charge!
+    aliases: [bob.smith]
+```
+
+> Commit all your changes
+
+```shell
+git commit -am 'Add additional alias'
+```
+
+> Push your changes to Developermail
+
+```shell
+git push
+```
+
+```
+Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 301 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote:
+remote: Processing config.yaml in master branch:
+remote:     Created alias bob.smith@developermail.io -> bob@developermail.io
+remote:
+remote:
+remote: -------------------------------------------------------------------------
+remote: You'll be billed $5.00 this month.
+remote: If you have any questions, feel free to contact support@developermail.io!
+remote:
+To https://developermail.io/git/bob@developermail.io
+   d336592..b33b7d7  master -> master
+```
+
+
+# Initial config.yaml
+
 > Your initial ``config.yaml`` will look like this:
 
 ```yaml
