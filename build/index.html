@@ -76,6 +76,35 @@ aliases.</p>
 <p>We&rsquo;re providing a DNS settings check page <code class="prettyprint">https://developermail.io/dns-check#/your-domain.com</code> to
 help you with these settings.</p>
 
+<blockquote>
+<p>DNS settings</p>
+</blockquote>
+<pre><code class="highlight plaintext">MX  smtp.developermail.io.
+TXT developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TXT v=spf1 ip4:88.198.18.23 -all
+TXT spf2.0/mfrom,pra ip4:88.198.18.23 -all
+TXT v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB
+</code></pre>
+
+<h2 id="configure-your-email-client">Configure your email client</h2>
+
+<p>Developermail provides <code class="prettyprint">IMAP</code> and <code class="prettyprint">SMTP</code> endpoints for receiving/ sending emails.
+We only accept secure connections.</p>
+
+<p>Use <code class="prettyprint">username@domain.tld</code> as username and the password we generated for you upon signup!</p>
+
+<blockquote>
+<p>IMAP Endpoint</p>
+</blockquote>
+<pre><code class="highlight shell">imap.developermail.io  <span class="c"># Port 143/STARTTLS or 993/SSL</span>
+</code></pre>
+
+<blockquote>
+<p>SMTP Endpoint</p>
+</blockquote>
+<pre><code class="highlight shell">smtp.developermail.io  <span class="c"># Port 587/STARTTLS or 465/SSL</span>
+</code></pre>
+
 <h2 id="start-configuring-...">Start configuring &hellip;</h2>
 
 <blockquote>
@@ -106,6 +135,64 @@ Checking connectivity... <span class="k">done</span>.
 
 <h1 id="configuration">Configuration</h1>
 
+<p>Configuring your Developermail mailboxes follows the regular git workflow.
+You make your changes to a file, commit them, and push them. As soon as they&rsquo;re pushed (and there&rsquo;s
+not error), the changes are live!</p>
+
+<p>As your configuration is a fully-functional git repository, you can use all the awesome Git candy,
+such as <a href="http://www.git-scm.com/docs">revert, branch, blame, &hellip;</a>!</p>
+
+<h2 id="your-first-push">Your first push</h2>
+
+<p>As an example, add an additional alias to your newly created mailbox.</p>
+
+<p>First, edit the <code class="prettyprint">config.yaml</code> file with your favorite editor.</p>
+
+<blockquote>
+<p>Add an alias to config.yaml</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="s">developermail.io</span><span class="pi">:</span>
+  <span class="c1"># Configuration section for bob@developermail.io</span>
+  <span class="c1"># We signed up using this address on the Developermail signup page</span>
+  <span class="s">bob</span><span class="pi">:</span>
+    <span class="c1"># Add a new alias here. bob.smith@developermail.io</span>
+    <span class="c1"># will be aliases to bob@developermail.io.</span>
+    <span class="c1"># You can then send and receive emails from both addresses</span>
+    <span class="c1"># Note: Aliases are free of charge!</span>
+    <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">bob.smith</span><span class="pi">]</span>
+</code></pre>
+
+<blockquote>
+<p>Commit all your changes</p>
+</blockquote>
+<pre><code class="highlight shell">git commit -am <span class="s1">'Add additional alias'</span>
+</code></pre>
+
+<blockquote>
+<p>Push your changes to Developermail</p>
+</blockquote>
+<pre><code class="highlight shell">git push
+</code></pre>
+<pre><code class="highlight plaintext">Counting objects: 3, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 301 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote:
+remote: Processing config.yaml in master branch:
+remote:     Created alias bob.smith@developermail.io -&gt; bob@developermail.io
+remote:
+remote:
+remote: -------------------------------------------------------------------------
+remote: You'll be billed $5.00 this month.
+remote: If you have any questions, feel free to contact support@developermail.io!
+remote:
+To https://developermail.io/git/bob@developermail.io
+   d336592..b33b7d7  master -&gt; master
+</code></pre>
+
+<h1 id="initial-config.yaml">Initial config.yaml</h1>
+
 <blockquote>
 <p>Your initial <code class="prettyprint">config.yaml</code> will look like this:</p>
 </blockquote>
@@ -121,7 +208,7 @@ Checking connectivity... <span class="k">done</span>.
 <p>Or like this, if you chose to signup for a @developermail.io mailbox</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="c1"># We registered bob@developermail.io</span>
-<span class="s">bob@developermail.io</span><span class="pi">:</span>
+<span class="s">developermail.io</span><span class="pi">:</span>
   <span class="s">bob</span><span class="pi">:</span>
     <span class="s">sieve</span><span class="pi">:</span> <span class="s">sieve/default.sieve</span>
     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[]</span>
@@ -267,15 +354,15 @@ this document on <a href="https://github.com/developermail/slate">Github</a> for
 <blockquote>
 <p>File messages from certian addresses into folders</p>
 </blockquote>
-<pre><code class="highlight plaintext">require ["fileinto"];
+<pre><code class="highlight c"><span class="n">require</span> <span class="p">[</span><span class="s">"fileinto"</span><span class="p">];</span>
 
-# Automatically put all emails from Facebook and Twitter in the social folder
-if anyof (address :contains "From" "twitter.com",
-          address :contains "From" "@facebookmail.com") {
+<span class="cp"># Automatically put all emails from Facebook and Twitter in the social folder
+</span><span class="k">if</span> <span class="nf">anyof</span> <span class="p">(</span><span class="n">address</span> <span class="o">:</span><span class="n">contains</span> <span class="s">"From"</span> <span class="s">"twitter.com"</span><span class="p">,</span>
+          <span class="n">address</span> <span class="o">:</span><span class="n">contains</span> <span class="s">"From"</span> <span class="s">"@facebookmail.com"</span><span class="p">)</span> <span class="p">{</span>
 
-    fileinto "social";
-    stop;
-}
+    <span class="n">fileinto</span> <span class="s">"social"</span><span class="p">;</span>
+    <span class="n">stop</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
 
 <h1 id="billing-&amp;-account">Billing &amp; Account</h1>
@@ -288,7 +375,6 @@ If there&rsquo;s any issues, please feel free to send an email to our <a href="m
 </blockquote>
 <pre><code class="highlight plaintext">$ git push
 [...]
-remote: -------------------------------------------------------------------------
 remote: You'll be billed $15.00 this month.
 remote: If you have any questions, feel free to contact support@developermail.io!
 remote:
