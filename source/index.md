@@ -2,7 +2,7 @@
 title: Developermail Documentation
 
 toc_footers:
-  - <a href='https://developermail.io/signup'>Sign Up for Developermail</a>
+  - <a href='https://developermail.io/signup'>Sign up for Developermail</a>
   - <a href='https://github.com/developermail/slate'>Help improving this documentation</a>
 
 search: false
