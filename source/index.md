@@ -131,7 +131,7 @@ example.com:
 
 ```yaml
 # We registered bob@developermail.io
-bob@developermail.io:
+developermail.io:
   bob:
     sieve: sieve/default.sieve
     aliases: []
