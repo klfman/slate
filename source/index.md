@@ -84,7 +84,9 @@ We only accept secure connections.
 Use ``username@domain.tld`` as username and the password we generated for you upon signup!
 
 
-## Start configuring
+# Configuration
+
+## Setup your repository
 
 > Clone your private developermail configuration repository
 
@@ -114,8 +116,6 @@ Clone your repository.
 
 You are now ready to start configuring.
 
-
-# Configuration
 
 Configuring your Developermail mailboxes follows the regular git workflow.
 You make your changes to a file, commit them, and push them. As soon as they're pushed (and there's
@@ -176,7 +176,7 @@ As an example, add an additional alias to your newly created mailbox.
 
 
 
-# Initial config.yaml
+## Initial config.yaml
 
 > config.yaml (custom domain)
 
