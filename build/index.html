@@ -41,7 +41,7 @@ and opening pull requests on <a href="https://github.com/developermail/slate">Gi
 You might also expect some bugs and glitches, even though we&rsquo;re pretty confident to provide a stable
 service nontheless, as the underlying techologies are battle-proven open-source products.</p>
 
-<p>If you encounter any bugs or security issues,, please <a href="mailto:support@developermail.io">contact us</a>.</p>
+<p>If you encounter any bugs or security issues, please <a href="mailto:support@developermail.io">contact us</a>.</p>
 
 <h1 id="getting-started">Getting started</h1>
 
@@ -69,6 +69,16 @@ aliases.</p>
 
 <h2 id="update-dns-settings">Update DNS settings</h2>
 
+<blockquote>
+<p>DNS settings</p>
+</blockquote>
+<pre><code class="highlight shell">MX  <span class="s2">"smtp.developermail.io."</span>
+TXT <span class="s2">"developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
+TXT <span class="s2">"v=spf1 ip4:88.198.18.23 -all"</span>
+TXT <span class="s2">"spf2.0/mfrom,pra ip4:88.198.18.23 -all"</span>
+TXT <span class="s2">"v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB"</span>
+</code></pre>
+
 <p>If you registered your mailbox using the @developermail.io domain, you can skip this step.</p>
 
 <p>When using a custom domain, you need to update your DNS settings in order to retrieve mails.</p>
@@ -76,22 +86,7 @@ aliases.</p>
 <p>We&rsquo;re providing a DNS settings check page <code class="prettyprint">https://developermail.io/dns-check#/your-domain.com</code> to
 help you with these settings.</p>
 
-<blockquote>
-<p>DNS settings</p>
-</blockquote>
-<pre><code class="highlight plaintext">MX  smtp.developermail.io.
-TXT developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TXT v=spf1 ip4:88.198.18.23 -all
-TXT spf2.0/mfrom,pra ip4:88.198.18.23 -all
-TXT v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB
-</code></pre>
-
 <h2 id="configure-your-email-client">Configure your email client</h2>
-
-<p>Developermail provides <code class="prettyprint">IMAP</code> and <code class="prettyprint">SMTP</code> endpoints for receiving/ sending emails.
-We only accept secure connections.</p>
-
-<p>Use <code class="prettyprint">username@domain.tld</code> as username and the password we generated for you upon signup!</p>
 
 <blockquote>
 <p>IMAP Endpoint</p>
@@ -105,7 +100,12 @@ We only accept secure connections.</p>
 <pre><code class="highlight shell">smtp.developermail.io  <span class="c"># Port 587/STARTTLS or 465/SSL</span>
 </code></pre>
 
-<h2 id="start-configuring-...">Start configuring &hellip;</h2>
+<p>Developermail provides <code class="prettyprint">IMAP</code> and <code class="prettyprint">SMTP</code> endpoints for receiving/ sending emails.
+We only accept secure connections.</p>
+
+<p>Use <code class="prettyprint">username@domain.tld</code> as username and the password we generated for you upon signup!</p>
+
+<h2 id="start-configuring">Start configuring</h2>
 
 <blockquote>
 <p>Clone your private developermail configuration repository</p>
@@ -131,6 +131,8 @@ Checking connectivity... <span class="k">done</span>.
 1 directory, 2 files
 </code></pre>
 
+<p>Clone your repository.</p>
+
 <p>You are now ready to start configuring.</p>
 
 <h1 id="configuration">Configuration</h1>
@@ -140,20 +142,15 @@ You make your changes to a file, commit them, and push them. As soon as they&rsq
 not error), the changes are live!</p>
 
 <p>As your configuration is a fully-functional git repository, you can use all the awesome Git candy,
-such as <a href="http://www.git-scm.com/docs">revert, branch, blame, &hellip;</a>!</p>
+such as <a href="http://www.git-scm.com/docs">revert, branch, blame and all the others</a>!</p>
 
 <h2 id="your-first-push">Your first push</h2>
-
-<p>As an example, add an additional alias to your newly created mailbox.</p>
-
-<p>First, edit the <code class="prettyprint">config.yaml</code> file with your favorite editor.</p>
 
 <blockquote>
 <p>Add an alias to config.yaml</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="s">developermail.io</span><span class="pi">:</span>
   <span class="c1"># Configuration section for bob@developermail.io</span>
-  <span class="c1"># We signed up using this address on the Developermail signup page</span>
   <span class="s">bob</span><span class="pi">:</span>
     <span class="c1"># Add a new alias here. bob.smith@developermail.io</span>
     <span class="c1"># will be aliases to bob@developermail.io.</span>
@@ -191,10 +188,19 @@ To https://developermail.io/git/bob@developermail.io
    d336592..b33b7d7  master -&gt; master
 </code></pre>
 
+<p>As an example, add an additional alias to your newly created mailbox.</p>
+
+<ul>
+<li>Edit the <code class="prettyprint">config.yaml</code> file with your favorite editor</li>
+<li>Commit your changes</li>
+<li>Push them</li>
+<li>Your configuration is live immediately!</li>
+</ul>
+
 <h1 id="initial-config.yaml">Initial config.yaml</h1>
 
 <blockquote>
-<p>Your initial <code class="prettyprint">config.yaml</code> will look like this:</p>
+<p>config.yaml (custom domain)</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="c1"># We registered at Developermail using bob@example.com</span>
 <span class="s">example.com</span><span class="pi">:</span>
@@ -204,8 +210,10 @@ To https://developermail.io/git/bob@developermail.io
     <span class="s">forwards</span><span class="pi">:</span> <span class="pi">[]</span>
 </code></pre>
 
+<p>Your initial <code class="prettyprint">config.yaml</code> will look like this.</p>
+
 <blockquote>
-<p>Or like this, if you chose to signup for a @developermail.io mailbox</p>
+<p>config.yaml (developermail.io)</p>
 </blockquote>
 <pre><code class="highlight yaml"><span class="c1"># We registered bob@developermail.io</span>
 <span class="s">developermail.io</span><span class="pi">:</span>
@@ -214,6 +222,8 @@ To https://developermail.io/git/bob@developermail.io
     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[]</span>
     <span class="s">forwards</span><span class="pi">:</span> <span class="pi">[]</span>
 </code></pre>
+
+<p>Or like this, if you chose to signup for a @developermail.io mailbox.</p>
 
 <h2 id="aliases">Aliases</h2>
 
@@ -271,26 +281,26 @@ to/ from the <code class="prettyprint">domain</code> section.</p>
 
 <p>Please note that your credit card will be charged automatically.</p>
 
-<h3 id="update-password-for-mailbox">Update password for mailbox</h3>
+<h3 id="change-your-mailbox-password">Change your mailbox password</h3>
+
+<blockquote>
+<p>Change your mailbox password</p>
+</blockquote>
+<pre><code class="highlight shell">curl -X POST -u fritz@developermail.io https://developermail.io/api/accounts/change-password
+</code></pre>
 
 <p>Passwords are automatically generated by our system. If you want to update
 the mailbox password, you need to initiate a <code class="prettyprint">curl</code> request.
 You will be asked for your old password. On success, a new password is generated for you.</p>
 
 <blockquote>
-<p>Update mailbox password</p>
+<p>Change password for another mailbox using the admin account</p>
 </blockquote>
-<pre><code class="highlight shell">curl -X POST -u fritz@developermail.io https://developermail.io/api/accounts/change-password
+<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com https://developermail.io/api/accounts/change-password --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
 </code></pre>
 
 <p>You can also re-generate passwords for all mailboxes under your command, using the admin login (the
 first mailbox you created when registering for developermail)</p>
-
-<blockquote>
-<p>Update mailbox using the admin account</p>
-</blockquote>
-<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com https://developermail.io/api/accounts/change-password --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
-</code></pre>
 
 <h2 id="domains">Domains</h2>
 
@@ -345,12 +355,6 @@ record.</p>
 
 <h3 id="sieve-examples">Sieve Examples</h3>
 
-<p>Developermail has full sieve support. Refer to the <a href="http://sieve.info/documents">RFCs</a> for detailed
-information, or adapt one of our examples!</p>
-
-<p>Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
-this document on <a href="https://github.com/developermail/slate">Github</a> for additional karma!</p>
-
 <blockquote>
 <p>File messages from certian addresses into folders</p>
 </blockquote>
@@ -365,10 +369,13 @@ this document on <a href="https://github.com/developermail/slate">Github</a> for
 <span class="p">}</span>
 </code></pre>
 
-<h1 id="billing-&amp;-account">Billing &amp; Account</h1>
+<p>Developermail has full sieve support. Refer to the <a href="http://sieve.info/documents">RFCs</a> for detailed
+information, or adapt one of our examples!</p>
 
-<p>Upon every push, you&rsquo;ll receive a note of the amout you&rsquo;ll be billed in the upcoming month.
-If there&rsquo;s any issues, please feel free to send an email to our <a href="mailto:support@developermail.io">support</a>.</p>
+<p>Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
+this document on <a href="https://github.com/developermail/slate">Github</a> for additional karma!</p>
+
+<h1 id="billing-&amp;-account">Billing &amp; Account</h1>
 
 <blockquote>
 <p>Billing information displayed upon &ldquo;git push&rdquo;</p>
@@ -381,6 +388,9 @@ remote:
 To https://developermail.io/git/bob@example.com
    52ab6e0..d336592  master -&gt; master
 </code></pre>
+
+<p>Upon every push, you&rsquo;ll receive a note of the amout you&rsquo;ll be billed in the upcoming month.
+If there&rsquo;s any issues, please feel free to send an email to our <a href="mailto:support@developermail.io">support</a>.</p>
 
 <h2 id="delete-account">Delete account</h2>
 
