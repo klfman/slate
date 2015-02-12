@@ -18,7 +18,8 @@ Please note that Developermail is currently in BETA. Not all features are deploy
 You might also expect some bugs and glitches, even though we're pretty confident to provide a stable
 service nontheless, as the underlying techologies are battle-proven open-source products.
 
-If you encounter any bugs or security issues, please [contact us](mailto:support@developermail.io).
+If you encounter any bugs or security issues, please contact us:
+<span class="email">(sorry, you need Javascript to see this address)</span>
 
 
 # Getting started
@@ -161,7 +162,7 @@ remote:
 remote:
 remote: -------------------------------------------------------------------------
 remote: You'll be billed $5.00 this month.
-remote: If you have any questions, feel free to contact support@developermail.io!
+remote: If you have any questions, feel free to contact support!
 remote:
 To https://developermail.io/git/bob@developermail.io
    d336592..b33b7d7  master -> master
@@ -371,17 +372,47 @@ this document on [Github](https://github.com/developermail/slate) for additional
 $ git push
 [...]
 remote: You'll be billed $15.00 this month.
-remote: If you have any questions, feel free to contact support@developermail.io!
+remote: If you have any questions, feel free to contact support
 remote:
 To https://developermail.io/git/bob@example.com
    52ab6e0..d336592  master -> master
 ```
 
 Upon every push, you'll receive a note of the amout you'll be billed in the upcoming month.
-If there's any issues, please feel free to send an email to our [support](mailto:support@developermail.io).
+If there's any issues, please feel free to send an email to our support:
+<span class="email">(sorry, you need Javascript to see this address)</span>
 
 
 ## Delete account
 
-Please contact our support team if you want to delete your account.
+Please contact our support
+(<span class="email">sorry, you need Javascript to see this address</span>)
+if you want to delete your account.
 We're currently working on the automated process for deleting accounts.
+
+
+
+<script type="text/javascript" language="javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "10RRbpd@NJeJSbRJpn9jS.jb"
+  key = "1Nw3Z8uQS6MJxnBtCTUqWpIifvcF7a0GzOoHkKsdyDPLhRlj4egmX95YAEbr2V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+$('.email').html("<a href='mailto:"+link+"'>"+link+"</a>")
+}
+//-->
+</script>
