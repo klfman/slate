@@ -262,7 +262,19 @@ developermail.io:
 You are able to create and delete mailboxes by simply adding and removing them
 to/ from the ``domain`` section.
 
-Please note that your credit card will be charged automatically.
+> Confirm deletion of a mailbox
+
+```shell
+curl https://developermail.io/api/mailboxes/mailbox@domain.tld/delete/TOKEN
+```
+
+Once you removed a mailbox from your `config.yaml` and pushed the changes, you'll receive a URL
+including a delete token to confirm the deletion of your mailbox.
+This prevents you to accidently delete your mailbox e.g. due to a misconfiguration.
+If you visit the URL in your browser or curl it, the mailbox is permanently deleted.
+
+
+Please note that your invoice will be automatically changed accordingly.
 
 
 > Change your mailbox password
