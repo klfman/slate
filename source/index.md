@@ -50,11 +50,10 @@ aliases.
 > DNS settings
 
 ```shell
-MX  "smtp.developermail.io."
-TXT "developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-TXT "v=spf1 ip4:88.198.18.23 -all"
-TXT "spf2.0/mfrom,pra ip4:88.198.18.23 -all"
-TXT "v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB"
+MX    example.com "smtp.developermail.io."
+TXT   example.com "developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+TXT   example.com "v=spf1 include:spf.developermail.io ~all"
+CNAME 2015._domainkey.example.com "dkim.developermail.io"
 ```
 
 If you registered your mailbox using the @developermail.io domain, you can skip this step.
