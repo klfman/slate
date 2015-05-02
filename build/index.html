@@ -73,11 +73,10 @@ aliases.</p>
 <blockquote>
 <p>DNS settings</p>
 </blockquote>
-<pre><code class="highlight shell">MX  <span class="s2">"smtp.developermail.io."</span>
-TXT <span class="s2">"developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
-TXT <span class="s2">"v=spf1 ip4:88.198.18.23 -all"</span>
-TXT <span class="s2">"spf2.0/mfrom,pra ip4:88.198.18.23 -all"</span>
-TXT <span class="s2">"v=DKIM1; h=rsa-sha256; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpOR9yd9SJwCX/JW0CBVaZfNESAswo1Q6xXguHkMPcrWOG4cFiw2Z/Z45HBzco8GOnqqpeNJLWxaAEbJ7kTlNPcZVn0E+/iEm8trSrqUTOwNk3OkUFs0GGCn37wxypdzG8eKpLXAVrNRmmTEgvKnuBBmxz+nXFtqWYexnT0U31cwIDAQAB"</span>
+<pre><code class="highlight shell">MX    example.com <span class="s2">"smtp.developermail.io."</span>
+TXT   example.com <span class="s2">"developermail-verification=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
+TXT   example.com <span class="s2">"v=spf1 include:spf.developermail.io ~all"</span>
+CNAME 2015._domainkey.example.com <span class="s2">"dkim.developermail.io"</span>
 </code></pre>
 
 <p>If you registered your mailbox using the @developermail.io domain, you can skip this step.</p>
@@ -113,10 +112,10 @@ We only accept secure connections.</p>
 <blockquote>
 <p>Clone your private developermail configuration repository</p>
 </blockquote>
-<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://developermail.io/git/bob@example.com
-Cloning into <span class="s1">'bob@example.com'</span>...
-Username <span class="k">for</span> <span class="s1">'https://developermail.io'</span>: bob@example.com
-Password <span class="k">for</span> <span class="s1">'https://bob@example.com@developermail.io'</span>: <span class="k">*********</span>
+<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://developermail.io/git/bob
+Cloning into <span class="s1">'bob'</span>...
+Username <span class="k">for</span> <span class="s1">'https://developermail.io'</span>: bob
+Password <span class="k">for</span> <span class="s1">'https://bob@developermail.io'</span>: <span class="k">*********</span>
 
 remote: Counting objects: 11, <span class="k">done</span>.
 remote: Compressing objects: 100% <span class="o">(</span>10/10<span class="o">)</span>, <span class="k">done</span>.
@@ -184,7 +183,7 @@ remote: ------------------------------------------------------------------------
 remote: You'll be billed $5.00 this month.
 remote: If you have any questions, feel free to contact support!
 remote:
-To https://developermail.io/git/bob@developermail.io
+To https://developermail.io/git/bob
    d336592..b33b7d7  master -&gt; master
 </code></pre>
 
@@ -243,6 +242,22 @@ to/ from the <code class="prettyprint">aliases</code> array.</p>
 <p>Please note that there is a limit of 3 aliases per mailbox if you use our developermail.io domain.
 If you use a custom domain, there is no limitation of how many aliases you can use per mailbox.</p>
 
+<blockquote>
+<p>Catchall aliases</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="s">catchall.me</span><span class="pi">:</span>
+  <span class="c1"># Setup a catchall for mailbox all@catchall.me</span>
+  <span class="c1"># All email to any address @catchall.me will be</span>
+  <span class="c1"># delivered to to "all@catchall.me" mailbox.</span>
+  <span class="s">all</span><span class="pi">:</span>
+     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">@"</span><span class="pi">]</span>
+</code></pre>
+
+<p>Catchalls are also supported. Using a catchall address, all email going to <code class="prettyprint">*@example.com</code> will end
+up in a certian mailbox (unless there&rsquo;s another mailbox/ alias configured).</p>
+
+<p>Please note that catchalls only work for custom domains.</p>
+
 <h2 id="forwards">Forwards</h2>
 
 <blockquote>
@@ -294,7 +309,7 @@ If you visit the URL in your browser or curl it, the mailbox is permanently dele
 <blockquote>
 <p>Change your mailbox password</p>
 </blockquote>
-<pre><code class="highlight shell">curl -X POST -u fritz@developermail.io <span class="s2">"https://developermail.io/api/accounts/change-password"</span>
+<pre><code class="highlight shell">curl -X POST -u fritz@developermail.io <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span>
 </code></pre>
 
 <h3 id="change-your-mailbox-password">Change your mailbox password</h3>
@@ -306,7 +321,7 @@ You will be asked for your old password. On success, a new password is generated
 <blockquote>
 <p>Change password for another mailbox using the admin account</p>
 </blockquote>
-<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com <span class="s2">"https://developermail.io/api/accounts/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
+<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
 </code></pre>
 
 <p>You can also re-generate passwords for all mailboxes under your command, using the admin login (the
@@ -395,7 +410,7 @@ this document on <a href="https://github.com/developermail/slate">Github</a> for
 remote: You'll be billed $15.00 this month.
 remote: If you have any questions, feel free to contact support
 remote:
-To https://developermail.io/git/bob@example.com
+To https://developermail.io/git/bob
    52ab6e0..d336592  master -&gt; master
 </code></pre>
 

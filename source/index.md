@@ -224,6 +224,22 @@ to/ from the ``aliases`` array.
 Please note that there is a limit of 3 aliases per mailbox if you use our developermail.io domain.
 If you use a custom domain, there is no limitation of how many aliases you can use per mailbox.
 
+> Catchall aliases
+
+```yaml
+catchall.me:
+  # Setup a catchall for mailbox all@catchall.me
+  # All email to any address @catchall.me will be
+  # delivered to to "all@catchall.me" mailbox.
+  all:
+     aliases: ["@"]
+```
+
+Catchalls are also supported. Using a catchall address, all email going to `*@example.com` will end
+up in a certian mailbox (unless there's another mailbox/ alias configured).
+
+Please note that catchalls only work for custom domains.
+
 
 ## Forwards
 
