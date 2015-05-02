@@ -91,10 +91,10 @@ Use ``username@domain.tld`` as username and the password we generated for you up
 > Clone your private developermail configuration repository
 
 ```shell
-$ git clone https://developermail.io/git/bob@example.com
-Cloning into 'bob@example.com'...
-Username for 'https://developermail.io': bob@example.com
-Password for 'https://bob@example.com@developermail.io': *********
+$ git clone https://developermail.io/git/bob
+Cloning into 'bob'...
+Username for 'https://developermail.io': bob
+Password for 'https://bob@developermail.io': *********
 
 remote: Counting objects: 11, done.
 remote: Compressing objects: 100% (10/10), done.
@@ -163,7 +163,7 @@ remote: ------------------------------------------------------------------------
 remote: You'll be billed $5.00 this month.
 remote: If you have any questions, feel free to contact support!
 remote:
-To https://developermail.io/git/bob@developermail.io
+To https://developermail.io/git/bob
    d336592..b33b7d7  master -> master
 ```
 
@@ -279,7 +279,7 @@ Please note that your invoice will be automatically changed accordingly.
 > Change your mailbox password
 
 ```shell
-curl -X POST -u fritz@developermail.io "https://developermail.io/api/accounts/change-password"
+curl -X POST -u fritz@developermail.io "https://developermail.io/api/mailboxes/change-password"
 ```
 
 ### Change your mailbox password
@@ -292,7 +292,7 @@ You will be asked for your old password. On success, a new password is generated
 > Change password for another mailbox using the admin account
 
 ```shell
-curl -X POST -u admin@my-domain.com "https://developermail.io/api/accounts/change-password" --data '{"user": "fritz", "domain": "my-domain.com"}'
+curl -X POST -u admin@my-domain.com "https://developermail.io/api/mailboxes/change-password" --data '{"user": "fritz", "domain": "my-domain.com"}'
 ```
 
 You can also re-generate passwords for all mailboxes under your command, using the admin login (the
@@ -385,7 +385,7 @@ $ git push
 remote: You'll be billed $15.00 this month.
 remote: If you have any questions, feel free to contact support
 remote:
-To https://developermail.io/git/bob@example.com
+To https://developermail.io/git/bob
    52ab6e0..d336592  master -> master
 ```
 
