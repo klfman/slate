@@ -39,6 +39,24 @@ Make sure you note your password once your signup is complete! It won't be displ
 password is used to authenticate yourself at the IMAP/SMTP services as well as for Git
 configuration.
 
+Note: Username for IMAP/SMTP is different than the one for cloning the git repo.
+
+### Git
+- If you signed up using the developermail domain, your git username is the userpart of the email
+- If you signed up using a custom domain, your username is the domain name without the dots (.)
+
+Examples:
+- `user` (for user@developermail.io)
+- `subexamplecom` (for admin@sub.example.com)
+
+### IMAP/SMTP
+The email services (IMAP and SMTP) always use the full email address as username.
+
+Examples:
+- `user@developermail.io`
+- `admin@sub.example.com`
+
+
 We are starting by offering a 5 USD per mailbox per month plan.
 This plan includes 5GB of storage.
 Aliases for @developermail.io mailboxes are limited to three. Custom domains include unlimited free
