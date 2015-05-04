@@ -112,7 +112,7 @@ Use ``username@domain.tld`` as username and the password we generated for you up
 $ git clone https://developermail.io/git/bob
 Cloning into 'bob'...
 Username for 'https://developermail.io': bob
-Password for 'https://bob@developermail.io': *********
+Password for 'https://bob': *********
 
 remote: Counting objects: 11, done.
 remote: Compressing objects: 100% (10/10), done.
@@ -120,7 +120,7 @@ remote: Total 11 (delta 2), reused 0 (delta 0)
 Unpacking objects: 100% (11/11), done.
 Checking connectivity... done.
 
-$ cd bob@example.com
+$ cd bob
 $ tree
 .
 ├── config.yaml
@@ -326,7 +326,7 @@ You will be asked for your old password. On success, a new password is generated
 > Change password for another mailbox using the admin account
 
 ```shell
-curl -X POST -u admin@my-domain.com "https://developermail.io/api/mailboxes/change-password" --data '{"user": "fritz", "domain": "my-domain.com"}'
+curl -X POST -u admin "https://developermail.io/api/mailboxes/change-password" --data '{"user": "fritz", "domain": "my-domain.com"}'
 ```
 
 You can also re-generate passwords for all mailboxes under your command, using the admin login (the
