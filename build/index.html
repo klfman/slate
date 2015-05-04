@@ -63,6 +63,27 @@ create your first mailbox. You are able to create more mailboxes/ aliases later.
 password is used to authenticate yourself at the IMAP/SMTP services as well as for Git
 configuration.</p>
 
+<p>Note: Username for IMAP/SMTP is different than the one for cloning the git repo.</p>
+
+<h3 id="git">Git</h3>
+
+<ul>
+<li>If you signed up using the developermail domain, your git username is the userpart of the email</li>
+<li>If you signed up using a custom domain, your username is the domain name without the dots (.)</li>
+</ul>
+
+<p>Examples:
+- <code class="prettyprint">user</code> (for user@developermail.io)
+- <code class="prettyprint">subexamplecom</code> (for admin@sub.example.com)</p>
+
+<h3 id="imap/smtp">IMAP/SMTP</h3>
+
+<p>The email services (IMAP and SMTP) always use the full email address as username.</p>
+
+<p>Examples:
+- <code class="prettyprint">user@developermail.io</code>
+- <code class="prettyprint">admin@sub.example.com</code></p>
+
 <p>We are starting by offering a 5 USD per mailbox per month plan.
 This plan includes 5GB of storage.
 Aliases for @developermail.io mailboxes are limited to three. Custom domains include unlimited free
@@ -115,7 +136,7 @@ We only accept secure connections.</p>
 <pre><code class="highlight shell"><span class="gp">$ </span>git clone https://developermail.io/git/bob
 Cloning into <span class="s1">'bob'</span>...
 Username <span class="k">for</span> <span class="s1">'https://developermail.io'</span>: bob
-Password <span class="k">for</span> <span class="s1">'https://bob@developermail.io'</span>: <span class="k">*********</span>
+Password <span class="k">for</span> <span class="s1">'https://bob'</span>: <span class="k">*********</span>
 
 remote: Counting objects: 11, <span class="k">done</span>.
 remote: Compressing objects: 100% <span class="o">(</span>10/10<span class="o">)</span>, <span class="k">done</span>.
@@ -123,7 +144,7 @@ remote: Total 11 <span class="o">(</span>delta 2<span class="o">)</span>, reused
 Unpacking objects: 100% <span class="o">(</span>11/11<span class="o">)</span>, <span class="k">done</span>.
 Checking connectivity... <span class="k">done</span>.
 
-<span class="gp">$ </span><span class="nb">cd </span>bob@example.com
+<span class="gp">$ </span><span class="nb">cd </span>bob
 <span class="gp">$ </span>tree
 .
 ├── config.yaml
@@ -321,7 +342,7 @@ You will be asked for your old password. On success, a new password is generated
 <blockquote>
 <p>Change password for another mailbox using the admin account</p>
 </blockquote>
-<pre><code class="highlight shell">curl -X POST -u admin@my-domain.com <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
+<pre><code class="highlight shell">curl -X POST -u admin <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
 </code></pre>
 
 <p>You can also re-generate passwords for all mailboxes under your command, using the admin login (the
