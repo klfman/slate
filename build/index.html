@@ -56,33 +56,35 @@ service nontheless, as the underlying techologies are battle-proven open-source 
 
 <h2 id="sign-up">Sign up</h2>
 
-<p>Open <a href="https://developermail.io/signup">https://developermail.io/signup</a>, enter your invitation code and
-create your first mailbox. You are able to create more mailboxes/ aliases later.</p>
-
-<p>Make sure you note your password once your signup is complete! It won&rsquo;t be displayed again. This
-password is used to authenticate yourself at the IMAP/SMTP services as well as for Git
-configuration.</p>
-
-<p>Note: Username for IMAP/SMTP is different than the one for cloning the git repo.</p>
-
-<h3 id="git">Git</h3>
+<blockquote>
+<p>Git username</p>
+</blockquote>
+<pre><code class="highlight shell">user          <span class="c"># for user@developermail.io</span>
+subexamplecom <span class="c"># for admin@sub.example.com</span>
+</code></pre>
 
 <ul>
 <li>If you signed up using the developermail domain, your git username is the userpart of the email</li>
 <li>If you signed up using a custom domain, your username is the domain name without the dots (.)</li>
 </ul>
 
-<p>Examples:
-- <code class="prettyprint">user</code> (for user@developermail.io)
-- <code class="prettyprint">subexamplecom</code> (for admin@sub.example.com)</p>
+<blockquote>
+<p>IMAP/ SMTP/ CalDAV username</p>
+</blockquote>
+<pre><code class="highlight shell">user@developermail.io
+admin@sub.example.com
+</code></pre>
 
-<h3 id="imap/smtp">IMAP/SMTP</h3>
+<p>Use the full email address of your mailbox.</p>
 
-<p>The email services (IMAP and SMTP) always use the full email address as username.</p>
+<p>Open <a href="https://developermail.io/signup">https://developermail.io/signup</a>, enter your invitation code and
+create your first mailbox. You are able to create more mailboxes/ aliases later.</p>
 
-<p>Examples:
-- <code class="prettyprint">user@developermail.io</code>
-- <code class="prettyprint">admin@sub.example.com</code></p>
+<p>Make sure you note your password once your signup is complete! It won&rsquo;t be displayed again. This
+password is used to authenticate yourself at the IMAP/ SMTP/ CalDAV services as well as for Git
+configuration.</p>
+
+<p>Note: Username for IMAP/ SMTP/ CalDAV is different than the one for cloning the git repo.</p>
 
 <p>We are starting by offering a 5 USD per mailbox per month plan.
 This plan includes 5GB of storage.
