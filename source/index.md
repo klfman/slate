@@ -310,9 +310,33 @@ You are able to create and delete forwards by simply adding and removing them
 to/ from the ``forwards`` variable.
 
 There are no limits on forwards neither for developermail.io nor for custom domains.
+Forwards are free of charge on custom domains.
 
-Note: When using a forward, the email will not be delivered to your Developermail mailbox, but only
+
+### Forward and keep emails in mailbox
+
+When using a forward, the email will not be delivered to your Developermail mailbox, but only
 forwarded to the addresses specified.
+
+> Keep mails when forwarding
+
+```yaml
+domain.tld:
+  # Forward emails, but also store them in the
+  # mailbox@domain.tld mailbox.
+  # This also enables IMAP/ SMTP access,
+  # normally not available for forwards
+  mailbox:
+    forwards:
+      - bob.smith@gmail.com
+      - mailbox@domain.tld
+```
+
+If you want to forward emails, but also keep them in your developermail mailbox, you can add the
+mailbox to the forwarded list.
+This also enables IMAP and SMTP access for the forwarded mailbox, allowing you to send emails.
+Please note that unlike forwards, forwards with the mailbox activated are charged as a normal
+mailbox.
 
 
 ## Mailboxes
