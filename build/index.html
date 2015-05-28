@@ -128,6 +128,42 @@ We only accept secure connections.</p>
 
 <p>Use <code class="prettyprint">username@domain.tld</code> as username and the password we generated for you upon signup!</p>
 
+<h2 id="configure-your-calendar-and-address-book">Configure your calendar and address book</h2>
+
+<h3 id="caldav-and-carddav-endpoint">CalDAV and CardDAV Endpoint</h3>
+
+<blockquote>
+<p>Endpoint</p>
+</blockquote>
+<pre><code class="highlight shell">https://dav.developermail.io/username@domain.tld
+</code></pre>
+
+<p>Developermail uses the CalDAV/ CardDAV protocol to sync calendars and address books.
+Use this URL for clients like</p>
+
+<ul>
+<li>iOS</li>
+<li>OS X iCal</li>
+<li><a href="https://play.google.com/store/apps/details?id=at.bitfire.davdroid">Davdroid</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=org.dmfs.caldav.lib">CalDAV-Sync</a>/
+<a href="https://play.google.com/store/apps/details?id=org.dmfs.carddav.Sync">CardDAV-Sync</a></li>
+</ul>
+
+<blockquote>
+<p>Endpoint for limited clients</p>
+</blockquote>
+<pre><code class="highlight shell">https://dav.developermail.io/username@domain.tld/home
+</code></pre>
+
+<p>If your client only supports a subset of the CalDAV protocol, you need
+to specify the full path to your calendar in your configuration.
+Use this URL for clients like</p>
+
+<ul>
+<li><a href="https://mozilla.org/thunderbird">Thunderbird</a>/
+<a href="https://addons.mozilla.org/de/thunderbird/addon/lightning/">Lightning</a></li>
+</ul>
+
 <h1 id="configuration">Configuration</h1>
 
 <h2 id="setup-your-repository">Setup your repository</h2>
@@ -294,10 +330,33 @@ up in a certian mailbox (unless there&rsquo;s another mailbox/ alias configured)
 <p>You are able to create and delete forwards by simply adding and removing them
 to/ from the <code class="prettyprint">forwards</code> variable.</p>
 
-<p>There are no limits on forwards neither for developermail.io nor for custom domains.</p>
+<p>There are no limits on forwards neither for developermail.io nor for custom domains.
+Forwards are free of charge on custom domains.</p>
 
-<p>Note: When using a forward, the email will not be delivered to your Developermail mailbox, but only
+<h3 id="forward-and-keep-emails-in-mailbox">Forward and keep emails in mailbox</h3>
+
+<p>When using a forward, the email will not be delivered to your Developermail mailbox, but only
 forwarded to the addresses specified.</p>
+
+<blockquote>
+<p>Keep mails when forwarding</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="s">domain.tld</span><span class="pi">:</span>
+  <span class="c1"># Forward emails, but also store them in the</span>
+  <span class="c1"># mailbox@domain.tld mailbox.</span>
+  <span class="c1"># This also enables IMAP/ SMTP access,</span>
+  <span class="c1"># normally not available for forwards</span>
+  <span class="s">mailbox</span><span class="pi">:</span>
+    <span class="s">forwards</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">bob.smith@gmail.com</span>
+      <span class="pi">-</span> <span class="s">mailbox@domain.tld</span>
+</code></pre>
+
+<p>If you want to forward emails, but also keep them in your developermail mailbox, you can add the
+mailbox to the forwarded list.
+This also enables IMAP and SMTP access for the forwarded mailbox, allowing you to send emails.
+Please note that unlike forwards, forwards with the mailbox activated are charged as a normal
+mailbox.</p>
 
 <h2 id="mailboxes">Mailboxes</h2>
 
