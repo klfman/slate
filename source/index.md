@@ -105,6 +105,40 @@ We only accept secure connections.
 Use ``username@domain.tld`` as username and the password we generated for you upon signup!
 
 
+## Configure your calendar and address book
+
+### CalDAV and CardDAV Endpoint
+
+> Endpoint
+
+```shell
+https://dav.developermail.io/username@domain.tld
+```
+
+Developermail uses the CalDAV/ CardDAV protocol to sync calendars and address books.
+Use this URL for clients like
+
+- iOS
+- OS X iCal
+- [Davdroid](https://play.google.com/store/apps/details?id=at.bitfire.davdroid)
+- [CalDAV-Sync](https://play.google.com/store/apps/details?id=org.dmfs.caldav.lib)/
+  [CardDAV-Sync](https://play.google.com/store/apps/details?id=org.dmfs.carddav.Sync)
+
+
+> Endpoint for limited clients
+
+```shell
+https://dav.developermail.io/username@domain.tld/home
+```
+
+If your client only supports a subset of the CalDAV protocol, you need
+to specify the full path to your calendar in your configuration.
+Use this URL for clients like
+
+- [Thunderbird](https://mozilla.org/thunderbird)/
+  [Lightning](https://addons.mozilla.org/de/thunderbird/addon/lightning/)
+
+
 # Configuration
 
 ## Setup your repository
