@@ -317,6 +317,23 @@ up in a certian mailbox (unless there&rsquo;s another mailbox/ alias configured)
 
 <p>Please note that catchalls only work for custom domains.</p>
 
+<h3 id="address-tags">Address tags</h3>
+
+<blockquote>
+<p>Address tags</p>
+</blockquote>
+<pre><code class="highlight plaintext">john+work@developermail.io -&gt; john@developermail.io
+</code></pre>
+
+<p>Developermail fully supports email tags for all mailboxes.
+Tags can also be used to create single-use addresses, or to filter incoming emails.
+For example, if your email address is &ldquo;john@developermail.io&rdquo;, you may use
+&ldquo;john+work@developermail.io&rdquo; for your work emails. The emails will end up in John&rsquo;s inbox, and can
+be filtered by sieve (see sieve section below). The tag can be chosen freely.</p>
+
+<p>The address tag section on <a href="https://en.wikipedia.org/wiki/Email_address#Address_tags">Wikipedia</a>
+might also be informational.</p>
+
 <h2 id="forwards">Forwards</h2>
 
 <blockquote>
