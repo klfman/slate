@@ -128,7 +128,7 @@ Use this URL for clients like
 > Endpoint for limited clients
 
 ```shell
-https://dav.developermail.io/username@domain.tld/home
+https://dav.developermail.io/username@domain.tld/calendar
 ```
 
 If your client only supports a subset of the CalDAV protocol, you need
