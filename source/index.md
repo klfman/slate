@@ -492,6 +492,9 @@ if anyof (address :contains "From" "twitter.com",
 Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
 information, or adapt one of our examples!
 
+Also find more inspiration on the [Dovecot Sieve](http://wiki.dovecot.org/LDA/Sieve) documentation
+site!
+
 Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
 this document on [Github](https://github.com/developermail/slate) for additional karma!
 
