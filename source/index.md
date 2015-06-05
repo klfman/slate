@@ -66,6 +66,12 @@ This plan includes 5GB of storage.
 Aliases for @developermail.io mailboxes are limited to three. Custom domains include unlimited free
 aliases.
 
+
+## Prices
+
+Refer to our [pricing page](https://developermail.io/pricing)
+
+
 ## Update DNS settings
 
 > DNS settings
@@ -137,6 +143,9 @@ Use this URL for clients like
 
 - [Thunderbird](https://mozilla.org/thunderbird)/
   [Lightning](https://addons.mozilla.org/de/thunderbird/addon/lightning/)
+
+
+Use your full email address as username along your mailbox password.
 
 
 # Configuration
