@@ -489,6 +489,43 @@ if anyof (address :contains "From" "twitter.com",
 }
 ```
 
+> Redirect only emails not marked as spam
+
+```c
+require "fileinto";
+require "regex";
+
+# Place all spam mails in "Spam" folder
+if allof (header :regex    "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
+      not header :contains "X-DSPAM-Reclassified" "Innocent") {
+
+  fileinto "Spam";
+  stop;
+}
+
+# Use sieve filter to redirect messages, so spam is not forwarded
+# Match all emails (unless they're spam)
+if header :contains "to" "" {
+  redirect "first.redirect@domain.tld";
+  redirect "second.redirect@otherdomain.tld";
+}
+```
+
+
+> Redirect mails, but also keep a copy in inbox
+
+```c
+# Match all emails
+if header :contains "to" "" {
+  redirect "external@domain.tld";
+
+  # Also keep a copy in inbox, but mark as seen
+  setflag "\\Seen";
+  keep;
+}
+```
+
+
 Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
 information, or adapt one of our examples!
 

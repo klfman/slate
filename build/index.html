@@ -499,6 +499,41 @@ record.</p>
 <span class="p">}</span>
 </code></pre>
 
+<blockquote>
+<p>Redirect only emails not marked as spam</p>
+</blockquote>
+<pre><code class="highlight c"><span class="n">require</span> <span class="s">"fileinto"</span><span class="p">;</span>
+<span class="n">require</span> <span class="s">"regex"</span><span class="p">;</span>
+
+<span class="cp"># Place all spam mails in "Spam" folder
+</span><span class="k">if</span> <span class="nf">allof</span> <span class="p">(</span><span class="n">header</span> <span class="o">:</span><span class="n">regex</span>    <span class="s">"X-DSPAM-Result"</span> <span class="s">"^(Spam|Virus|Bl[ao]cklisted)$"</span><span class="p">,</span>
+      <span class="n">not</span> <span class="n">header</span> <span class="o">:</span><span class="n">contains</span> <span class="s">"X-DSPAM-Reclassified"</span> <span class="s">"Innocent"</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">fileinto</span> <span class="s">"Spam"</span><span class="p">;</span>
+  <span class="n">stop</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Use sieve filter to redirect messages, so spam is not forwarded
+# Match all emails (unless they're spam)
+</span><span class="k">if</span> <span class="n">header</span> <span class="o">:</span><span class="n">contains</span> <span class="s">"to"</span> <span class="s">""</span> <span class="p">{</span>
+  <span class="n">redirect</span> <span class="s">"first.redirect@domain.tld"</span><span class="p">;</span>
+  <span class="n">redirect</span> <span class="s">"second.redirect@otherdomain.tld"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>Redirect mails, but also keep a copy in inbox</p>
+</blockquote>
+<pre><code class="highlight c"><span class="cp"># Match all emails
+</span><span class="k">if</span> <span class="n">header</span> <span class="o">:</span><span class="n">contains</span> <span class="s">"to"</span> <span class="s">""</span> <span class="p">{</span>
+  <span class="n">redirect</span> <span class="s">"external@domain.tld"</span><span class="p">;</span>
+
+  <span class="cp"># Also keep a copy in inbox, but mark as seen
+</span>  <span class="n">setflag</span> <span class="s">"</span><span class="se">\\</span><span class="s">Seen"</span><span class="p">;</span>
+  <span class="n">keep</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
 <p>Developermail has full sieve support. Refer to the <a href="http://sieve.info/documents">RFCs</a> for detailed
 information, or adapt one of our examples!</p>
 
