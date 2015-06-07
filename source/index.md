@@ -134,7 +134,11 @@ Use this URL for clients like
 > Endpoint for limited clients
 
 ```shell
+# Default calendar
 https://dav.developermail.io/username@domain.tld/calendar
+
+# Address book
+https://dav.developermail.io/username@domain.tld/addresses
 ```
 
 If your client only supports a subset of the CalDAV protocol, you need
