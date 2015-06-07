@@ -358,25 +358,8 @@ Forwards are free of charge on custom domains.</p>
 
 <h3 id="forward-and-keep-emails-in-mailbox">Forward and keep emails in mailbox</h3>
 
-<p>When using a forward, the email will not be delivered to your Developermail mailbox, but only
-forwarded to the addresses specified.</p>
-
-<blockquote>
-<p>Keep mails when forwarding</p>
-</blockquote>
-<pre><code class="highlight yaml"><span class="s">domain.tld</span><span class="pi">:</span>
-  <span class="c1"># Forward emails, but also store them in the</span>
-  <span class="c1"># mailbox@domain.tld mailbox.</span>
-  <span class="c1"># This also enables IMAP/ SMTP access,</span>
-  <span class="c1"># normally not available for forwards</span>
-  <span class="s">mailbox</span><span class="pi">:</span>
-    <span class="s">forwards</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">bob.smith@gmail.com</span>
-      <span class="pi">-</span> <span class="s">mailbox@domain.tld</span>
-</code></pre>
-
-<p>If you want to forward emails, but also keep them in your developermail mailbox, you can add the
-mailbox to the forwarded list.
+<p>If you want to forward emails, but also keep them in your developermail mailbox, configure
+forwarding using a sieve filter. See <a href="/docs#sieve">below</a> for details.
 This also enables IMAP and SMTP access for the forwarded mailbox, allowing you to send emails.
 Please note that unlike forwards, forwards with the mailbox activated are charged as a normal
 mailbox.</p>
