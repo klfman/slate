@@ -471,7 +471,7 @@ require ["fileinto"];
 if anyof (address :contains "From" "twitter.com",
           address :contains "From" "@facebookmail.com") {
 
-    fileinto "Social";
+    fileinto :create "Social";
     stop;
 }
 ```
@@ -512,6 +512,8 @@ if header :contains "to" "" {
 }
 ```
 
+Note: If you want to `fileinto` another folder, make sure to create it first!
+Alternatively, you can use `fileinto :create "Foldername"`.
 
 Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
 information, or adapt one of our examples!
