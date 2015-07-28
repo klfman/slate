@@ -196,6 +196,7 @@ Checking connectivity... <span class="k">done</span>.
 <span class="gp">$ </span>tree
 .
 ├── config.yaml
+├── settings.yaml
 └── sieve
     └── default.sieve
 
@@ -368,7 +369,7 @@ This also enables IMAP and SMTP access for the forwarded mailbox, allowing you t
 Please note that unlike forwards, forwards with the mailbox activated are charged as a normal
 mailbox.</p>
 
-<h2 id="set-password-length">Set password length</h2>
+<h2 id="set-mailbox-password-length">Set mailbox password length</h2>
 
 <blockquote>
 <p>Set password length</p>
@@ -433,14 +434,14 @@ You will be asked for your old password. On success, a new password is generated
 <blockquote>
 <p>Change password for another mailbox using the admin account</p>
 </blockquote>
-<pre><code class="highlight shell">curl -X POST -u admin <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "my-domain.com"}'</span>
+<pre><code class="highlight shell">curl -X POST -u examplecom <span class="s2">"https://developermail.io/api/mailboxes/change-password"</span> --data <span class="s1">'{"user": "fritz", "domain": "example.com"}'</span>
 </code></pre>
 
-<p>You can also re-generate passwords for all mailboxes under your command, using the admin login (the
-first mailbox you created when registering for developermail)</p>
+<p>You can also re-generate passwords for all mailboxes under your command, using the account login
+(the login you also use to access the git repository)</p>
 
 <p>If you need more entropy (longer) passwords, you can set the required length using the
-<code class="prettyprint">password_length</code> parameter in your <code class="prettyprint">config.yaml</code>. See <a href="/docs#set-password-length">this section</a> for details.</p>
+<code class="prettyprint">password_length</code> parameter in your <code class="prettyprint">config.yaml</code>. See <a href="/docs#set-mailbox-password-length">this section</a> for details.</p>
 
 <h2 id="domains">Domains</h2>
 
@@ -556,7 +557,80 @@ site!</p>
 <p>Share your sieve configurations with other Developermail users (e.g. by sending a pull-request on
 this document on <a href="https://github.com/developermail/slate">Github</a> for additional karma!</p>
 
-<h1 id="billing-&amp;-account">Billing &amp; Account</h1>
+<h1 id="account">Account</h1>
+
+<blockquote>
+<p>settings.yaml (default example)</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="c1"># This is the configuration file for your account.</span>
+<span class="c1">#</span>
+<span class="c1"># By default, the password generated for your account is 10 characters</span>
+<span class="c1"># long. If you want to increase the entropy of your password (and therefore</span>
+<span class="c1"># its security), you can specify the length for generated passwords here.</span>
+<span class="c1"># (Needs to be between 10 and 50 characters)</span>
+<span class="c1">#</span>
+<span class="c1"># Note: You need to request a new password, which then will be using the</span>
+<span class="c1"># new entropy settings. You can request a new password for this account</span>
+<span class="c1"># using the following command:</span>
+<span class="c1"># See https://developermail.io/docs#change-your-account-password for details)</span>
+<span class="c1">#</span>
+<span class="c1"># curl -X POST -u &lt;account_username&gt; https://developermail.io/api/accounts/change-password</span>
+<span class="c1">#</span>
+<span class="c1"># account_password_length: 35</span>
+</code></pre>
+
+<p>All settings regarding your account are configured in the YAML file <code class="prettyprint">settings.yaml</code>.
+Analog to the mailbox configuration, you can edit the file with your favorite editor, commit and
+push the changes, and they&rsquo;re live!</p>
+
+<p>In case you do not have an <code class="prettyprint">settings.yaml</code> file in your repository (it was introduced in Jul 2015),
+you can simply add it yourself. See example to the right.</p>
+
+<blockquote>
+<p>Commit and push your new settings</p>
+</blockquote>
+<pre><code class="highlight shell">git add settings.yaml
+git commit -am <span class="s1">'Add settings.yaml'</span>
+git push
+</code></pre>
+
+<p>Add the file and commit/ push the changes to see them in action!</p>
+
+<h2 id="change-your-account-password">Change your account password</h2>
+
+<p>Your initial password is automatically generated upon registration. If you want to generate a new
+password, you can do so using a <code class="prettyprint">curl</code> request. You will be asked for your old password. On
+success, a new password is generated for you.</p>
+
+<blockquote>
+<p>Change account password</p>
+</blockquote>
+<pre><code class="highlight shell">curl -X POST -u examplecom <span class="s2">"https://developermail.io/api/accounts/change-password"</span>
+</code></pre>
+
+<p>If you need more entropy (longer) passwords, you can set the required length using the
+<code class="prettyprint">account_password_length</code> parameter in your <code class="prettyprint">settings.yaml</code>. See <a href="/docs#set-account-password-length">this
+section</a> for details.</p>
+
+<h2 id="set-account-password-length">Set account password length</h2>
+
+<blockquote>
+<p>Increase account password entropy</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="s">account_password_length</span><span class="pi">:</span> <span class="s">35</span>
+</code></pre>
+
+<p>Developermail, analog to mailboxes, only uses secure, randomly generated passwords by default. It
+is, although, possible to define the length of the generated passwords in case you e.g. need higher
+entropy. In case you need additional security for your account, you can increase the password
+entropy using the <code class="prettyprint">account_password_length</code> field in the <code class="prettyprint">settings.yaml</code> configuration file.</p>
+
+<p>The password length needs to be between 10 and 50 characters.</p>
+
+<p>Note: You need to re-generate the password once you set <code class="prettyprint">account_password_length</code> in your configuration (and
+pushed it using <code class="prettyprint">git push</code>). See the <a href="/docs#change-your-account-password">change password</a> section for details.</p>
+
+<h2 id="billing">Billing</h2>
 
 <blockquote>
 <p>Billing information displayed upon &ldquo;git push&rdquo;</p>
