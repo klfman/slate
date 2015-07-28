@@ -551,15 +551,43 @@ this document on [Github](https://github.com/developermail/slate) for additional
 
 # Account
 
-> settings.yaml (account settings)
+> settings.yaml (default example)
 
 ```yaml
-# account_password_length: 10
+# This is the configuration file for your account.
+#
+# By default, the password generated for your account is 10 characters
+# long. If you want to increase the entropy of your password (and therefore
+# its security), you can specify the length for generated passwords here.
+# (Needs to be between 10 and 50 characters)
+#
+# Note: You need to request a new password, which then will be using the
+# new entropy settings. You can request a new password for this account
+# using the following command:
+# See https://developermail.io/docs#change-your-account-password for details)
+#
+# curl -X POST -u <account_username> https://developermail.io/api/accounts/change-password
+#
+# account_password_length: 35
 ```
 
 All settings regarding your account are configured in the YAML file `settings.yaml`.
 Analog to the mailbox configuration, you can edit the file with your favorite editor, commit and
 push the changes, and they're live!
+
+In case you do not have an `settings.yaml` file in your repository (it was introduced in Jul 2015),
+you can simply add it yourself. See example to the right.
+
+
+> Commit and push your new settings
+
+```shell
+git add settings.yaml
+git commit -am 'Add settings.yaml'
+git push
+```
+
+Add the file and commit/ push the changes to see them in action!
 
 
 ## Change your account password
