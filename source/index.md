@@ -14,11 +14,9 @@ search: false
 This is a living document. Please help us improving this documentation by forking
 and opening pull requests on [Github](https://github.com/developermail/slate) Thanks!
 
-<aside class="notice">
 Please note that Developermail is currently in BETA. Not all features are deployed yet.
 You might also expect some bugs and glitches, even though we're pretty confident to provide a stable
 service nontheless, as the underlying techologies are battle-proven open-source products.
-</aside>
 
 If you encounter any bugs or security issues, please contact us:
 <span class="email">(sorry, you need Javascript to see this address)</span>
@@ -61,9 +59,7 @@ Make sure you note your password once your signup is complete! It won't be displ
 password is used to authenticate yourself at the IMAP/ SMTP/ CalDAV services as well as for Git
 configuration.
 
-<aside class="notice">
-Username for IMAP/ SMTP/ CalDAV is different than the one for cloning the git repo.
-</aside>
+Note: Username for IMAP/ SMTP/ CalDAV is different than the one for cloning the git repo.
 
 We are starting by offering a 5 USD per mailbox per month plan.
 This plan includes 5GB of storage.
@@ -294,10 +290,8 @@ aliases:
 You are able to create and delete aliases by simply adding and removing them
 to/ from the ``aliases`` array.
 
-<aside class="notice">
 Please note that there is a limit of 3 aliases per mailbox if you use our developermail.io domain.
 If you use a custom domain, there is no limitation of how many aliases you can use per mailbox.
-</aside>
 
 > Catchall aliases
 
@@ -313,9 +307,7 @@ catchall.me:
 Catchalls are also supported. Using a catchall address, all email going to `*@example.com` will end
 up in a certian mailbox (unless there's another mailbox/ alias configured).
 
-<aside class="notice">
 Please note that catchalls only work for custom domains.
-</aside>
 
 ### Address tags
 
@@ -377,10 +369,8 @@ to define the length of the generated passwords in case you e.g. need higher ent
 
 The password length needs to be between 10 and 50 characters.
 
-<aside class="notice">
-You need to re-generate the password once you set `password_length` in your configuration (and
+Note: You need to re-generate the password once you set `password_length` in your configuration (and
 pushed it using `git push`). See the [change password](/docs#change-your-mailbox-password) section for details.
-</aside>
 
 
 ## Mailboxes
@@ -411,9 +401,8 @@ including a delete token to confirm the deletion of your mailbox.
 This prevents you to accidently delete your mailbox e.g. due to a misconfiguration.
 If you visit the URL in your browser or curl it, the mailbox is permanently deleted.
 
-<aside class="notice">
+
 Please note that your invoice will be automatically changed accordingly.
-</aside>
 
 
 > Change your mailbox password
@@ -547,10 +536,8 @@ if header :contains "to" "" {
 }
 ```
 
-<aside class="notice">
-If you want to `fileinto` another folder, make sure to create it first!
+Note: If you want to `fileinto` another folder, make sure to create it first!
 Alternatively, you can use `fileinto :create "Foldername"`.
-</aside>
 
 Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
 information, or adapt one of our examples!
@@ -607,10 +594,9 @@ entropy using the `account_password_length` field in the `settings.yaml` configu
 
 The password length needs to be between 10 and 50 characters.
 
-<aside class="notice">
-You need to re-generate the password once you set `account_password_length` in your configuration (and
+Note: You need to re-generate the password once you set `account_password_length` in your configuration (and
 pushed it using `git push`). See the [change password](/docs#change-your-account-password) section for details.
-</aside>
+
 
 ## Billing
 
