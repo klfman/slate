@@ -174,6 +174,7 @@ $ cd bob
 $ tree
 .
 ├── config.yaml
+├── settings.yaml
 └── sieve
     └── default.sieve
 
@@ -548,7 +549,56 @@ Share your sieve configurations with other Developermail users (e.g. by sending 
 this document on [Github](https://github.com/developermail/slate) for additional karma!
 
 
-# Billing & Account
+# Account
+
+> settings.yaml (account settings)
+
+```yaml
+# account_password_length: 10
+```
+
+All settings regarding your account are configured in the YAML file `settings.yaml`.
+Analog to the mailbox configuration, you can edit the file with your favorite editor, commit and
+push the changes, and they're live!
+
+
+## Change your account password
+
+Your initial password is automatically generated upon registration. If you want to generate a new
+password, you can do so using a ``curl`` request. You will be asked for your old password. On
+success, a new password is generated for you.
+
+> Change account password
+
+```shell
+curl -X POST -u examplecom "https://developermail.io/api/accounts/change-password"
+```
+
+If you need more entropy (longer) passwords, you can set the required length using the
+`account_password_length` parameter in your `settings.yaml`. See [this
+section](/docs#set-account-password-length) for details.
+
+
+## Set account password length
+
+> Increase account password entropy
+
+```yaml
+account_password_length: 35
+```
+
+Developermail, analog to mailboxes, only uses secure, randomly generated passwords by default. It
+is, although, possible to define the length of the generated passwords in case you e.g. need higher
+entropy. In case you need additional security for your account, you can increase the password
+entropy using the `account_password_length` field in the `settings.yaml` configuration file.
+
+The password length needs to be between 10 and 50 characters.
+
+Note: You need to re-generate the password once you set `account_password_length` in your configuration (and
+pushed it using `git push`). See the [change password](/docs#change-your-account-password) section for details.
+
+
+## Billing
 
 > Billing information displayed upon "git push"
 
@@ -565,6 +615,7 @@ To https://developermail.io/git/bob
 Upon every push, you'll receive a note of the amout you'll be billed in the upcoming month.
 If there's any issues, please feel free to send an email to our support:
 <span class="email">(sorry, you need Javascript to see this address)</span>
+
 
 
 ## Delete account
