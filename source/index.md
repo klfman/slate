@@ -351,7 +351,7 @@ This also enables IMAP and SMTP access for the forwarded mailbox, allowing you t
 Please note that unlike forwards, forwards with the mailbox activated are charged as a normal
 mailbox.
 
-## Set password length
+## Set mailbox password length
 
 > Set password length
 
@@ -420,14 +420,14 @@ You will be asked for your old password. On success, a new password is generated
 > Change password for another mailbox using the admin account
 
 ```shell
-curl -X POST -u admin "https://developermail.io/api/mailboxes/change-password" --data '{"user": "fritz", "domain": "my-domain.com"}'
+curl -X POST -u examplecom "https://developermail.io/api/mailboxes/change-password" --data '{"user": "fritz", "domain": "example.com"}'
 ```
 
-You can also re-generate passwords for all mailboxes under your command, using the admin login (the
-first mailbox you created when registering for developermail)
+You can also re-generate passwords for all mailboxes under your command, using the account login
+(the login you also use to access the git repository)
 
 If you need more entropy (longer) passwords, you can set the required length using the
-`password_length` parameter in your `config.yaml`. See [this section](/docs#set-password-length) for details.
+`password_length` parameter in your `config.yaml`. See [this section](/docs#set-mailbox-password-length) for details.
 
 
 ## Domains
