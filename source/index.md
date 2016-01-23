@@ -300,12 +300,17 @@ catchall.me:
   # Setup a catchall for mailbox all@catchall.me
   # All email to any address @catchall.me will be
   # delivered to to "all@catchall.me" mailbox.
+  # Furthermore adding "reply@catchall.me" alias,
+  # so the "all@catchall.me" mailbox is able to reply
+  # using "reply@catchall.me".
   all:
-     aliases: ["@"]
+     aliases: ["@", "reply"]
 ```
 
 Catchalls are also supported. Using a catchall address, all email going to `*@example.com` will end
 up in a certian mailbox (unless there's another mailbox/ alias configured).
+If you plan to send emails from a mailbox with a catchall, make sure you additionally add them to
+the list.
 
 Please note that catchalls only work for custom domains.
 
