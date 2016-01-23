@@ -9,7 +9,7 @@
     <link href="docs/stylesheets/screen-26112511.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="docs/stylesheets/print-300dd84c.css" rel="stylesheet" type="text/css" media="print" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <script src="docs/javascripts/all_nosearch-2383e62e.js" type="text/javascript"></script>
+      <script src="docs/javascripts/all_nosearch-60117141.js" type="text/javascript"></script>
 
   </head>
 
@@ -319,12 +319,17 @@ If you use a custom domain, there is no limitation of how many aliases you can u
   <span class="c1"># Setup a catchall for mailbox all@catchall.me</span>
   <span class="c1"># All email to any address @catchall.me will be</span>
   <span class="c1"># delivered to to "all@catchall.me" mailbox.</span>
+  <span class="c1"># Furthermore adding "reply@catchall.me" alias,</span>
+  <span class="c1"># so the "all@catchall.me" mailbox is able to reply</span>
+  <span class="c1"># using "reply@catchall.me".</span>
   <span class="s">all</span><span class="pi">:</span>
-     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">@"</span><span class="pi">]</span>
+     <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">@"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">reply"</span><span class="pi">]</span>
 </code></pre>
 
 <p>Catchalls are also supported. Using a catchall address, all email going to <code class="prettyprint">*@example.com</code> will end
-up in a certian mailbox (unless there&rsquo;s another mailbox/ alias configured).</p>
+up in a certian mailbox (unless there&rsquo;s another mailbox/ alias configured).
+If you plan to send emails from a mailbox with a catchall, make sure you additionally add them to
+the list.</p>
 
 <p>Please note that catchalls only work for custom domains.</p>
 
