@@ -14,9 +14,9 @@ search: false
 This is a living document. Please help us improving this documentation by forking
 and opening pull requests on [Github](https://github.com/developermail/slate) Thanks!
 
-Please note that Developermail is currently in BETA. Not all features are deployed yet.
-You might also expect some bugs and glitches, even though we're pretty confident to provide a stable
-service nontheless, as the underlying techologies are battle-proven open-source products.
+While providing a brand-new way of configuring your email account,
+Developermail users battle-proven open-source products underneath to provide a
+stable service.
 
 If you encounter any bugs or security issues, please contact us:
 <span class="email">(sorry, you need Javascript to see this address)</span>
