@@ -553,6 +553,40 @@ record.</p>
 <p>Note: If you want to <code class="prettyprint">fileinto</code> another folder, make sure to create it first!
 Alternatively, you can use <code class="prettyprint">fileinto :create &quot;Foldername&quot;</code>.</p>
 
+<blockquote>
+<p>Automatic reply (vacation response)</p>
+</blockquote>
+<pre><code class="highlight c"><span class="n">require</span> <span class="s">"vacation"</span><span class="p">;</span>
+
+<span class="cp"># Send out a vacation note once a day
+</span><span class="n">vacation</span>
+  <span class="o">:</span><span class="n">days</span> <span class="mi">1</span>
+  <span class="o">:</span><span class="n">subject</span> <span class="s">"I'm out of office"</span>
+  <span class="o">:</span><span class="n">from</span> <span class="s">"John Smith &lt;john@developermail.io&gt;"</span>
+<span class="s">"Thanks for contacting me. I'm out of office, though."</span><span class="p">;</span>
+</code></pre>
+
+<blockquote>
+<p>Advanced automatic reply</p>
+</blockquote>
+<pre><code class="highlight c"><span class="n">require</span> <span class="s">"vacation"</span><span class="p">;</span>
+<span class="n">require</span> <span class="s">"variables"</span><span class="p">;</span>
+
+<span class="cp"># Automatic responses can also reference the incoming message.
+# In the following example, we're configuring the response to
+# reference the subject of the incoming message:
+</span><span class="k">if</span> <span class="n">header</span> <span class="o">:</span><span class="n">matches</span> <span class="s">"Subject"</span> <span class="s">"*"</span> <span class="p">{</span>
+        <span class="n">set</span> <span class="s">"subject"</span> <span class="s">"${1}"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp"># Send out an automatic reply once a day
+</span><span class="n">vacation</span>
+  <span class="o">:</span><span class="n">days</span> <span class="mi">1</span>
+  <span class="o">:</span><span class="n">subject</span> <span class="s">"Your message: ${subject}"</span>
+  <span class="o">:</span><span class="n">from</span> <span class="s">"John Smith &lt;john@developermail.io&gt;"</span>
+<span class="s">"Thanks for contacting me. I'm out of office, though."</span><span class="p">;</span>
+</code></pre>
+
 <p>Developermail has full sieve support. Refer to the <a href="http://sieve.info/documents">RFCs</a> for detailed
 information, or adapt one of our examples!</p>
 

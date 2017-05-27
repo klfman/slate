@@ -544,6 +544,42 @@ if header :contains "to" "" {
 Note: If you want to `fileinto` another folder, make sure to create it first!
 Alternatively, you can use `fileinto :create "Foldername"`.
 
+
+> Automatic reply (vacation response)
+
+```c
+require "vacation";
+
+# Send out a vacation note once a day
+vacation
+  :days 1
+  :subject "I'm out of office"
+  :from "John Smith <john@developermail.io>"
+"Thanks for contacting me. I'm out of office, though.";
+```
+
+> Advanced automatic reply
+
+```c
+require "vacation";
+require "variables";
+
+# Automatic responses can also reference the incoming message.
+# In the following example, we're configuring the response to
+# reference the subject of the incoming message:
+if header :matches "Subject" "*" {
+        set "subject" "${1}";
+}
+
+# Send out an automatic reply once a day
+vacation
+  :days 1
+  :subject "Your message: ${subject}"
+  :from "John Smith <john@developermail.io>"
+"Thanks for contacting me. I'm out of office, though.";
+```
+
+
 Developermail has full sieve support. Refer to the [RFCs](http://sieve.info/documents) for detailed
 information, or adapt one of our examples!
 
