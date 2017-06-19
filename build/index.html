@@ -333,6 +333,27 @@ the list.</p>
 
 <p>Please note that catchalls only work for custom domains.</p>
 
+<blockquote>
+<p>Cross-domain forwards</p>
+</blockquote>
+<pre><code class="highlight yaml"><span class="c1"># Our primary domain with a catchall.</span>
+<span class="c1"># Create an additional "office" alias so we can reply</span>
+<span class="c1"># to emails using office@primary.com</span>
+<span class="s">primary.com</span><span class="pi">:</span>
+  <span class="s">all</span><span class="pi">:</span>
+    <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">@"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">office"</span><span class="pi">]</span>
+
+<span class="c1"># A secondary domain, forwarded to all@primary.com.</span>
+<span class="c1"># The all@primary.com account can also reply with the</span>
+<span class="c1"># all@secondary.com and webmaster@secondary.com addresses.</span>
+<span class="s">secondary.com</span><span class="pi">:</span>
+  <span class="s">all</span><span class="pi">:</span>
+    <span class="s">aliases</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">@"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">webmaster"</span><span class="pi">]</span>
+    <span class="s">forwards</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">all@primary.com</span><span class="pi">]</span>
+</code></pre>
+
+<p>Catchalls and forwards work across multiple domains. In this example we&rsquo;re using <code class="prettyprint">all@primary.com</code> as our primary email address with a catchall. The secondary domain <code class="prettyprint">secondary.com</code> also has a catchall and is forwarded to the primary address. When replying to emails, <code class="prettyprint">all@primary.com</code> is allowed to also send emails from <code class="prettyprint">all@secondary.com</code> and <code class="prettyprint">webmaster@secondary.com</code>.</p>
+
 <h3 id="address-tags">Address tags</h3>
 
 <blockquote>

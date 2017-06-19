@@ -314,6 +314,28 @@ the list.
 
 Please note that catchalls only work for custom domains.
 
+> Cross-domain forwards
+
+```yaml
+# Our primary domain with a catchall.
+# Create an additional "office" alias so we can reply
+# to emails using office@primary.com
+primary.com:
+  all:
+    aliases: ["@", "office"]
+
+# A secondary domain, forwarded to all@primary.com.
+# The all@primary.com account can also reply with the
+# all@secondary.com and webmaster@secondary.com addresses.
+secondary.com:
+  all:
+    aliases: ["@", "webmaster"]
+    forwards: [all@primary.com]
+```
+
+Catchalls and forwards work across multiple domains. In this example we're using `all@primary.com` as our primary email address with a catchall. The secondary domain `secondary.com` also has a catchall and is forwarded to the primary address. When replying to emails, `all@primary.com` is allowed to also send emails from `all@secondary.com` and `webmaster@secondary.com`.
+
+
 ### Address tags
 
 > Address tags
