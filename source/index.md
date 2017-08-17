@@ -26,7 +26,6 @@ If you encounter any bugs or security issues, please contact us:
 
 ## Requirements
 
-* Invitation code (Developermail is invite-only at the moment)
 * [Git](http://git-scm.com/)
 * Email client (IMAP/SMTP capable)
 
