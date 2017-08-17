@@ -51,7 +51,7 @@ admin@sub.example.com
 
 Use the full email address of your mailbox.
 
-Open [https://developermail.io/signup](https://developermail.io/signup), enter your invitation code and
+Open [https://developermail.io/signup](https://developermail.io/signup) and
 create your first mailbox. You are able to create more mailboxes/ aliases later.
 
 Make sure you note your password once your signup is complete! It won't be displayed again. This
